@@ -12,6 +12,12 @@ bot = commands.Bot(command_prefix='!', intents=intents)
 async def on_ready():
     print(f'Giriş yapıldı:  {bot.user.name}')
 
+@bot.event
+async def on_message(message):
+    if message.content.startswith("http"):
+        await message.author.ban(reason="Bağlantı göndermek yasaktır")
+
+
 @bot.command()
 async def start(ctx):
     await ctx.send("Merhaba! Ben bir sohbet yöneticisi botuyum!")
