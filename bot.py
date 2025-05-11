@@ -16,7 +16,8 @@ async def on_ready():
 async def on_message(message):
     if message.content.startswith("http"):
         await message.author.ban(reason="Bağlantı göndermek yasaktır")
-
+    if "http" in message.content.lower():
+        await message.author.ban(reason="Bağlantı göndermek yasaktır")
 
 @bot.command()
 async def start(ctx):
